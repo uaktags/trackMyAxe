@@ -2,135 +2,338 @@ extends layout
 append body  
 		.row
 			main.col-md-9.ml-sm-auto.col-lg-10.px-4(role='main')
+				h1.h2 WATL Game
 				.d-flex.justify-content-between.flex-wrap.flex-md-nowrap.align-items-center.pt-3.pb-2.mb-3.border-bottom
-					h1.h2 Dashboard
-						.container
-							.row
-								.col-md-4
-									svg#watl(version='1.1', xmlns='http://www.w3.org/2000/svg', xmlns:xlink='http://www.w3.org/1999/xlink', x='0px', y='0px', viewBox='0 0 3456 3456', style='enable-background:new 0 0 3456 3456;', xml:space='preserve')
-										style(type='text/css').
-											.st0 {
-											fill:#0000FF;
-											stroke:#000000;
-											stroke-width:0.25;
-											stroke-miterlimit:10;
-											z-index: 40;
-											}
-											.st1 {
-											fill:#FF0000;
-											stroke:#000000;
-											stroke-width:62;
-											stroke-miterlimit:10;
-											z-index: 40;
-											}
-											.st2 {
-											fill:none;
-											stroke:#000000;
-											stroke-width:2;
-											stroke-miterlimit:10;
-											}
-											.st3 {
-											fill:black;
-											fill-opacity: 0;
-											stroke:#000000;
-											stroke-width:62;
-											stroke-miterlimit:10;
-											}
-											.st4 {
-											fill:none;
-											}
-											.st5 {
-											font-family:'MyriadPro-Regular';
-											}
-											.st6 {
-											font-size:350px;
-											}
-											.selected {
-											fill:goldenrod;
-											}
-										g#playarea
-											g#areas
-												g#rng1
-													rect.st4(x='413.1', y='1591', width='254.9', height='453')
-													text.st5.st6(transform='matrix(1 0 0 1 413.0959 1839.4971)') 1
-													circle#rng1.st3(cx='1721', cy='1728', r='1358')
-													rect.st4(x='2839.7', y='1591', width='254.9', height='453')
-													text.st5.st6(transform='matrix(1 0 0 1 2839.7041 1839.4971)') 1
-												g#rng2
-													circle#rng2.st3(cx='1728', cy='1728', r='1070')
-													rect.st4(x='2584.8', y='1591', width='254.9', height='453')
-													text.st5.st6(transform='matrix(1 0 0 1 2584.8 1839.4971)') 2
-													rect.st4(x='724.3', y='1591', width='254.9', height='453')
-													text.st5.st6(transform='matrix(1 0 0 1 724.2959 1839.4971)') 2
-												g#rng3
-													circle#rng3.st3(cx='1728', cy='1728', r='782')
-													rect.st4(x='1011', y='1591', width='254.9', height='453')
-													text.st5.st6(transform='matrix(1 0 0 1 1011 1839.4971)') 3
-													rect.st4(x='2267', y='1591', width='254.9', height='453')
-													text.st5.st6(transform='matrix(1 0 0 1 2267 1839.4971)') 3
-												g#rng4
-													circle#rng4.st3(cx='1721', cy='1728', r='494')
-													rect.st4(x='1952', y='1591', width='254.9', height='453')
-													text.st5.st6(transform='matrix(1 0 0 1 1952 1839.4971)') 4
-													rect.st4(x='1295', y='1591', width='254.9', height='453')
-													text.st5.st6(transform='matrix(1 0 0 1 1295 1839.4971)') 4
-												g#ks1
-													circle#ks1.st0(cx='925.2', cy='825.1', r='54')
-												g#ks2
-													circle#ks2.st0(cx='2530.8', cy='825.1', r='54')
-												g#Bullseye
-													circle.st1(cx='1728', cy='1728', r='157')
-											g#Boards
-												line.st2(x1='691.2', y1='0', x2='691.2', y2='3456')
-												line.st2(x1='1382.4', y1='0', x2='1382.4', y2='3456')
-												line.st2(x1='2073.6', y1='0', x2='2073.6', y2='3456')
-												line.st2(x1='2764.8', y1='0', x2='2764.8', y2='3456')
-									.col-md-5.col-lg-10.offset-md-1
-										.btn-group(data-toggle='buttons')
-											label.btn.btn-info
-												input(type='checkbox', autocomplete='off')
-												| Call Killshot (Shot #5)
-										.btn-group(data-toggle='buttons')
-											label.btn.btn-info
-												input(type='checkbox', autocomplete='off')
-												| Call Killshot (Shot #10)
-								.col-md-4
-									table#scores.table.table-striped(style="font-size:small")
-										thead
-											tr
-												th Round
-												th Score
-										tbody
-											tr
-												td 1
-												td#r1
-											tr
-												td 2
-												td#r2
-											tr
-												td 3
-												td#r3
-											tr
-												td 4
-												td#r4
-											tr
-												td 5
-												td#r5
-											tr
-												td 6
-												td#r6
-											tr
-												td 7
-												td#r7
-											tr
-												td 8
-												td#r8
-											tr
-												td 9
-												td#r9
-											tr
-												td 10
-												td#r10
-									.col-lg-10.clearfix
-										button.btn.btn-secondary.float-left(onclick='clearGame();') Start Over
-										button.btn.btn-success.float-right(onclick='clearGame();') Submit Scores
+					script.
+						var round = [0,1,1];
+						var totalscore = [0,0,0];
+						function clearGame(){
+							round = [0,1,1];
+							totalscore = [0,0,0];
+							for(i=1; i<11; i++){
+								$("#r"+i+"p1").html("");
+								$("#r"+i+"p2").html("");
+							}
+							}
+							function activateKill(){
+							
+							}
+						$(document).ready(function(e){
+							$("#watl #areas").children().hover(
+							function(){
+								$(this).children("g circle").css("fill-opacity","0.6");
+								$(this).children("g circle").css("fill", "blue");
+								if($(this).attr('id') == "rng1"){
+									$(this).parent().children("g#rng2").children("circle").css("fill-opacity","100");
+									$(this).parent().children("g#rng2").children("g circle").css("fill", "white");
+								}
+								if($(this).attr('id') == "rng2"){
+									$(this).parent().children("g#rng3").children("circle").css("fill-opacity","100");
+									$(this).parent().children("g#rng3").children("g circle").css("fill", "white");
+								}
+								if($(this).attr('id') == "rng3"){
+									$(this).parent().children("g#rng4").children("circle").css("fill-opacity","100");
+									$(this).parent().children("g#rng4").children("g circle").css("fill", "white");
+								}
+							},
+							function(){
+								if($(this).attr('id') == "ks1" || $(this).attr('id') == 'ks2'){
+									$(this).children("g circle").css("fill-opacity","1");
+									$(this).children("g circle").css("fill", "#0000FF");
+								}else if($(this).attr('id') == 'Bullseye'){
+									$(this).children("g circle").css("fill-opacity","1");
+									$(this).children("g circle").css("fill", "#FF0000");
+								}else{
+									$(this).children("g circle").css("fill-opacity","");
+									$(this).children("g circle").css("fill", "white");
+								}
+							}
+							)
+							$("#watl #areas").children().click(function(e){
+							var score = 0;
+							var player = $(this).parent().parent().parent().attr("player");
+								switch($(this).attr("id")){
+								case "rng1":
+									score = 1;
+									break;
+								case "rng2":
+									score = 2;
+									break;
+								case "rng3":
+									score = 3;
+									break;
+								case "rng4":
+									score = 4;
+									break;
+								case "Bullseye":
+									score = 6;
+									break;
+								case "ks1":
+									if(round[player] == 10 || round[player] == 5){
+									score = 8;
+									alert("KILL SHOT!");
+									}else{
+									score = 1;
+									}
+									break;
+								case "ks2":
+									if(round[player] == 10 || round[player] == 5){
+									score = 8;
+									alert("KILL SHOT!");
+									}else{
+									score = 1;
+									}
+									break;
+								}
+							
+							$("#r"+round[player]+"p"+player).html(score);
+							if(round[player] <= 10){
+								totalscore[player] += score;
+								console.log("Round ", round[player], " Score: ", score, "TotalScore: ", totalscore[player], "Debug:", $(this).attr("id"));
+								round[player] += 1;
+							}
+							if(round[1] >= 11 && round[2] >= 11){
+								var winner= 0;
+								if(totalscore[1] > totalscore[2])
+									winner = 1;
+								else if(totalscore[2] > totalscore[1])
+									winner = 2;
+								else
+									winner = 3
+								alert("Game Over! Player 1 has " + totalscore[1] + " points, and Player 2 has " + totalscore[2] + " points. " + (winner == 3? "The game was a tie!": "Winner is player " + winner + "!"));
+								clearGame();
+							}
+							});
+						});
+					.container
+						.row
+							.col-md-4
+								h2.text-center Player 1
+								svg#watl(player=1, version='1.1', xmlns='http://www.w3.org/2000/svg', xmlns:xlink='http://www.w3.org/1999/xlink', x='0px', y='0px', viewBox='0 0 3456 3456', style='enable-background:new 0 0 3456 3456;', xml:space='preserve')
+									style(type='text/css').
+										.st0 {
+										fill:#0000FF;
+										stroke:#000000;
+										stroke-width:0.25;
+										stroke-miterlimit:10;
+										z-index: 40;
+										}
+										.st1 {
+										fill:#FF0000;
+										stroke:#000000;
+										stroke-width:62;
+										stroke-miterlimit:10;
+										z-index: 40;
+										}
+										.st2 {
+										fill:none;
+										stroke:#000000;
+										stroke-width:2;
+										stroke-miterlimit:10;
+										}
+										.st3 {
+										fill:black;
+										fill-opacity: 0;
+										stroke:#000000;
+										stroke-width:62;
+										stroke-miterlimit:10;
+										}
+										.st4 {
+										fill:none;
+										}
+										.st5 {
+										font-family:'MyriadPro-Regular';
+										}
+										.st6 {
+										font-size:350px;
+										}
+										.selected {
+										fill:goldenrod;
+										}
+									g#playarea
+										g#areas
+											g#rng1
+												rect.st4(x='413.1', y='1591', width='254.9', height='453')
+												text.st5.st6(transform='matrix(1 0 0 1 413.0959 1839.4971)') 1
+												circle#rng1.st3(cx='1721', cy='1728', r='1358')
+												rect.st4(x='2839.7', y='1591', width='254.9', height='453')
+												text.st5.st6(transform='matrix(1 0 0 1 2839.7041 1839.4971)') 1
+											g#rng2
+												circle#rng2.st3(cx='1728', cy='1728', r='1070')
+												rect.st4(x='2584.8', y='1591', width='254.9', height='453')
+												text.st5.st6(transform='matrix(1 0 0 1 2584.8 1839.4971)') 2
+												rect.st4(x='724.3', y='1591', width='254.9', height='453')
+												text.st5.st6(transform='matrix(1 0 0 1 724.2959 1839.4971)') 2
+											g#rng3
+												circle#rng3.st3(cx='1728', cy='1728', r='782')
+												rect.st4(x='1011', y='1591', width='254.9', height='453')
+												text.st5.st6(transform='matrix(1 0 0 1 1011 1839.4971)') 3
+												rect.st4(x='2267', y='1591', width='254.9', height='453')
+												text.st5.st6(transform='matrix(1 0 0 1 2267 1839.4971)') 3
+											g#rng4
+												circle#rng4.st3(cx='1721', cy='1728', r='494')
+												rect.st4(x='1952', y='1591', width='254.9', height='453')
+												text.st5.st6(transform='matrix(1 0 0 1 1952 1839.4971)') 4
+												rect.st4(x='1295', y='1591', width='254.9', height='453')
+												text.st5.st6(transform='matrix(1 0 0 1 1295 1839.4971)') 4
+											g#ks1
+												circle#ks1.st0(cx='925.2', cy='825.1', r='54')
+											g#ks2
+												circle#ks2.st0(cx='2530.8', cy='825.1', r='54')
+											g#Bullseye
+												circle.st1(cx='1728', cy='1728', r='157')
+										g#Boards
+											line.st2(x1='691.2', y1='0', x2='691.2', y2='3456')
+											line.st2(x1='1382.4', y1='0', x2='1382.4', y2='3456')
+											line.st2(x1='2073.6', y1='0', x2='2073.6', y2='3456')
+											line.st2(x1='2764.8', y1='0', x2='2764.8', y2='3456')
+								.col-md-5.col-lg-10.offset-md-1
+									.btn-group-toggle(data-toggle='buttons')
+										label.btn.btn-info
+											input(type='checkbox', autocomplete='off', style="font-size:13px;!important")
+											| Call Killshot #5
+									.btn-group-toggle(data-toggle='buttons')
+										label.btn.btn-info
+											input(type='checkbox', autocomplete='off', style="font-size:13px;")
+											| Call Killshot #10
+							.col-md-3
+								table#scores.table.table-striped(style="font-size:small")
+									thead
+										tr
+											th Round
+											th Score
+											th Score
+									tbody
+										tr
+											td 1
+											td#r1p1
+											td#r1p2
+										tr
+											td 2
+											td#r2p1
+											td#r2p2
+										tr
+											td 3
+											td#r3p1
+											td#r3p2
+										tr
+											td 4
+											td#r4p1
+											td#r4p2
+										tr
+											td 5
+											td#r5p1
+											td#r5p2
+										tr
+											td 6
+											td#r6p1
+											td#r6p2
+										tr
+											td 7
+											td#r7p1
+											td#r7p2
+										tr
+											td 8
+											td#r8p1
+											td#r8p2
+										tr
+											td 9
+											td#r9p1
+											td#r9p2
+										tr
+											td 10
+											td#r10p1
+											td#r10p2
+										
+								.col-lg-10.clearfix
+									button.btn.btn-secondary.float-left(onclick='clearGame();') Start Over
+									button.btn.btn-success.float-right(onclick='clearGame();') Submit Scores
+							.col-md-4
+								h2.text-center Player 2
+								svg#watl(player=2,version='1.1', xmlns='http://www.w3.org/2000/svg', xmlns:xlink='http://www.w3.org/1999/xlink', x='0px', y='0px', viewBox='0 0 3456 3456', style='enable-background:new 0 0 3456 3456;', xml:space='preserve')
+									style(type='text/css').
+										.st0 {
+										fill:#0000FF;
+										stroke:#000000;
+										stroke-width:0.25;
+										stroke-miterlimit:10;
+										z-index: 40;
+										}
+										.st1 {
+										fill:#FF0000;
+										stroke:#000000;
+										stroke-width:62;
+										stroke-miterlimit:10;
+										z-index: 40;
+										}
+										.st2 {
+										fill:none;
+										stroke:#000000;
+										stroke-width:2;
+										stroke-miterlimit:10;
+										}
+										.st3 {
+										fill:black;
+										fill-opacity: 0;
+										stroke:#000000;
+										stroke-width:62;
+										stroke-miterlimit:10;
+										}
+										.st4 {
+										fill:none;
+										}
+										.st5 {
+										font-family:'MyriadPro-Regular';
+										}
+										.st6 {
+										font-size:350px;
+										}
+										.selected {
+										fill:goldenrod;
+										}
+									g#playarea
+										g#areas
+											g#rng1
+												rect.st4(x='413.1', y='1591', width='254.9', height='453')
+												text.st5.st6(transform='matrix(1 0 0 1 413.0959 1839.4971)') 1
+												circle#rng1.st3(cx='1721', cy='1728', r='1358')
+												rect.st4(x='2839.7', y='1591', width='254.9', height='453')
+												text.st5.st6(transform='matrix(1 0 0 1 2839.7041 1839.4971)') 1
+											g#rng2
+												circle#rng2.st3(cx='1728', cy='1728', r='1070')
+												rect.st4(x='2584.8', y='1591', width='254.9', height='453')
+												text.st5.st6(transform='matrix(1 0 0 1 2584.8 1839.4971)') 2
+												rect.st4(x='724.3', y='1591', width='254.9', height='453')
+												text.st5.st6(transform='matrix(1 0 0 1 724.2959 1839.4971)') 2
+											g#rng3
+												circle#rng3.st3(cx='1728', cy='1728', r='782')
+												rect.st4(x='1011', y='1591', width='254.9', height='453')
+												text.st5.st6(transform='matrix(1 0 0 1 1011 1839.4971)') 3
+												rect.st4(x='2267', y='1591', width='254.9', height='453')
+												text.st5.st6(transform='matrix(1 0 0 1 2267 1839.4971)') 3
+											g#rng4
+												circle#rng4.st3(cx='1721', cy='1728', r='494')
+												rect.st4(x='1952', y='1591', width='254.9', height='453')
+												text.st5.st6(transform='matrix(1 0 0 1 1952 1839.4971)') 4
+												rect.st4(x='1295', y='1591', width='254.9', height='453')
+												text.st5.st6(transform='matrix(1 0 0 1 1295 1839.4971)') 4
+											g#ks1
+												circle#ks1.st0(cx='925.2', cy='825.1', r='54')
+											g#ks2
+												circle#ks2.st0(cx='2530.8', cy='825.1', r='54')
+											g#Bullseye
+												circle.st1(cx='1728', cy='1728', r='157')
+										g#Boards
+											line.st2(x1='691.2', y1='0', x2='691.2', y2='3456')
+											line.st2(x1='1382.4', y1='0', x2='1382.4', y2='3456')
+											line.st2(x1='2073.6', y1='0', x2='2073.6', y2='3456')
+											line.st2(x1='2764.8', y1='0', x2='2764.8', y2='3456')
+								.col-md-5.col-lg-10.offset-md-1
+									.btn-group-toggle(data-toggle='buttons')
+										label.btn.btn-info
+											input(type='checkbox', autocomplete='off', style="font-size:13px;")
+											| Call Killshot #5
+									.btn-group-toggle(data-toggle='buttons')
+										label.btn.btn-info
+											input(type='checkbox', autocomplete='off', style="font-size:13px;")
+											| Call Killshot #10
