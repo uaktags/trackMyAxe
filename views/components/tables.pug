@@ -1,0 +1,28 @@
+//- table mixins
+mixin table(header,data,type,name)
+	- var type = type || ""
+	- var name = name || ""
+	table.table(
+		class=type
+		name=name)
+		thead
+			tr
+				each head, i in header
+					th #{head}
+		tbody
+			each row,j in data
+				tr
+					each col,k in row
+						td #{col}
+	
+mixin table-striped(header,data,name)
+	+table(header,data,"table-striped",name)
+
+mixin table-bordered(header,data,name)
+	+table(header,data,"table-bordered",name)
+
+mixin table-hover(header,data,name)
+	+table(header,data,"table-hover",name)
+
+mixin table-condensed(header,data,name)
+	+table(header,data,"table-condensed",name)

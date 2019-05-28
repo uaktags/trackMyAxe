@@ -1,0 +1,36 @@
+extends layout
+append styles
+	// Custom styles for this template
+	link(href='../css/dashboard.css', rel='stylesheet')
+append body  
+		.row
+			.col-sm-3.col-md-2.sidebar
+				ul.nav.nav-sidebar
+					li
+						a(href='#')
+							| Home
+					li.active
+						a(href='#') 
+							| Leaderboard
+							span.sr-only (current)
+					li
+						a(href='#') Create Game
+			.col-sm-9.col-sm-offset-3.col-md-10.col-md-offset-2.main
+				h1.page-header Leaderboard
+				.row.placeholders
+					.col-xs-6.col-sm-3.placeholder
+						img.img-responsive(src='../images/dashboard_blue.jpg', alt='Generic placeholder thumbnail')
+						h4 Label
+						span.text-muted Something else
+					.col-xs-6.col-sm-3.placeholder
+						img.img-responsive(src='../images/dashboard_green.jpg', alt='Generic placeholder thumbnail')
+						h4 Label
+						span.text-muted Something else
+					.col-xs-6.col-sm-3.placeholder
+						img.img-responsive(src='../images/dashboard_blue.jpg', alt='Generic placeholder thumbnail')
+						h4 Label
+						span.text-muted Something else
+					.col-xs-6.col-sm-3.placeholder
+						img.img-responsive(src='../images/dashboard_green.jpg', alt='Generic placeholder thumbnail')
+						h4 Label
+						span.text-muted Something else

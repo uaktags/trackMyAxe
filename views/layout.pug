@@ -1,0 +1,95 @@
+//- bootstrap.jade
+//- bootstrap mixins
+
+
+//- Including Icon mixins
+include components/icons
+//- Including Alert mixins
+include components/alerts
+//- Including Tooltip mixins
+include components/tooltips
+//- Including Accordion mixins
+include components/accordion
+//- Including Carousel mixins
+include components/carousel
+//- Including Table mixins
+include components/tables
+//- Including Navbar mixins
+include components/navbar
+//- Including Toggle Button mixins
+include components/toggle
+//- Including Nav mixins
+include components/navs
+//- Including Label mixins
+include components/labels
+//- Including Panel mixins
+include components/panels
+//- Including Tab mixins
+include components/tabs
+//- Including Dropdown mixins
+include components/dropdowns
+//- Including Form control mixins
+include components/forms
+//- Including Modal dialog mixins
+include components/modal
+//- Including List group mixins
+include components/list-groups
+//- Including Progress bar mixins
+include components/progress-bars
+//- Including Button mixins
+include components/buttons
+//- Including Image mixins
+include components/images
+//- Including Bootswatch theme mixins
+include components/bootswatch
+
+doctype html
+html(lang="en")
+	head
+		block head
+			meta(charset="UTF-8")
+			meta(http-equiv="X-UA-Compatible", content="IE=edge")
+			meta(name="viewport",content="width=device-width, initial-scale=1")
+			meta(name="description",content="")
+			meta(name="author",content="")
+			link(rel="icon",href="../../favicon.ico")
+			title= title
+			block styles
+				link(rel="stylesheet",href="../css/bootstrap.css")
+				link(href='../css/dashboard.css', rel='stylesheet')
+				script(src="../js/jquery.js")
+	body(data-spy="scroll",data-target=".scrollspy")
+			block body  
+				nav.navbar.navbar-dark.fixed-top.bg-dark.flex-md-nowrap.p-0.shadow
+					a.navbar-brand.navbar-brand.col-sm-3.col-md-2.mr-0(href='#') Project name
+				.container-fluid
+					.row
+						nav.col-md-2.d-none.d-md-block.bg-light.sidebar
+							.sidebar-sticky
+								ul.nav.flex-column
+									li.nav-item
+										a.nav-link.active(href='#')
+											span(data-feather='home')
+											|               Dashboard 
+											span.sr-only (current)
+									li.nav-item
+										a.nav-link(href='#')
+											span(data-feather='file')
+											|               Profile
+								h6.sidebar-heading.d-flex.justify-content-between.align-items-center.px-3.mt-4.mb-1.text-muted
+									span Games
+									a.d-flex.align-items-center.text-muted(href='#')
+										span(data-feather='plus-circle')
+								ul.nav.flex-column.mb-2
+									li.nav-item
+										a.nav-link(href='/game')
+											span(data-feather='file-text')
+											|               Create New Game
+									li.nav-item
+										a.nav-link(href='/leaderboard')
+											span(data-feather='file-text')
+											|               Leaderboard
+
+		
+			block scripts
+				script(src="../js/bootstrap.js")
