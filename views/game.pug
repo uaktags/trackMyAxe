@@ -87,7 +87,7 @@ append body
 								}
 							
 							$("#r"+round[player]+"p"+player).html(score);
-							if(round[player] <= 10){
+							if(round[player] < 11){
 								totalscore[player] += score;
 								console.log("Round ", round[player], " Score: ", score, "TotalScore: ", totalscore[player], "Debug:", $(this).attr("id"));
 								round[player] += 1;
@@ -100,11 +100,23 @@ append body
 									winner = 2;
 								else
 									winner = 3
-								alert("Game Over! Player 1 has " + totalscore[1] + " points, and Player 2 has " + totalscore[2] + " points. " + (winner == 3? "The game was a tie!": "Winner is player " + winner + "!"));
-								clearGame();
+								$('#asdf').children().children().children("h5").html("The winner is Player " + winner);
+								$('#asdf').modal()
 							}
 							});
 						});
+					#asdf.modal.fade(tabindex='-1', role='dialog', aria-labelledby='exampleModalLabel', aria-hidden='true')
+						.modal-dialog(role='document')
+							.modal-content
+							.modal-header
+								h5#exampleModalLabel.modal-title Modal title
+								button.close(type='button', data-dismiss='modal', aria-label='Close')
+								span(aria-hidden='true') ×
+							.modal-body
+								| ...
+							.modal-footer
+								button.btn.btn-secondary(type='button', data-dismiss='modal') Close
+								button.btn.btn-primary(type='button') Save changes
 					.container
 						.row
 							.col-md-4
@@ -187,15 +199,14 @@ append body
 											line.st2(x1='1382.4', y1='0', x2='1382.4', y2='3456')
 											line.st2(x1='2073.6', y1='0', x2='2073.6', y2='3456')
 											line.st2(x1='2764.8', y1='0', x2='2764.8', y2='3456')
-								.col-md-5.col-lg-10.offset-md-1
-									.btn-group-toggle(data-toggle='buttons')
-										label.btn.btn-info
-											input(type='checkbox', autocomplete='off', style="font-size:13px;!important")
-											| Call Killshot #5
+								.col-md-5.col-lg-10.offset-md-2
 									.btn-group-toggle(data-toggle='buttons')
 										label.btn.btn-info
 											input(type='checkbox', autocomplete='off', style="font-size:13px;")
-											| Call Killshot #10
+											| Call KS #5
+										label.btn.btn-info
+											input(type='checkbox', autocomplete='off', style="font-size:13px;")
+											| Call KS #10
 							.col-md-3
 								table#scores.table.table-striped(style="font-size:small")
 									thead
@@ -245,9 +256,10 @@ append body
 											td#r10p1
 											td#r10p2
 										
-								.col-lg-10.clearfix
-									button.btn.btn-secondary.float-left(onclick='clearGame();') Start Over
-									button.btn.btn-success.float-right(onclick='clearGame();') Submit Scores
+								.col-lg-10.offset-md-2
+									.btn-group
+										button.btn.btn-secondary.btn-sm.float-left(onclick='clearGame();') Start Over
+										button.btn.btn-success.btn-sm.float-right(onclick='clearGame();') Submit Scores
 							.col-md-4
 								h2.text-center Player 2
 								svg#watl(player=2,version='1.1', xmlns='http://www.w3.org/2000/svg', xmlns:xlink='http://www.w3.org/1999/xlink', x='0px', y='0px', viewBox='0 0 3456 3456', style='enable-background:new 0 0 3456 3456;', xml:space='preserve')
@@ -328,12 +340,11 @@ append body
 											line.st2(x1='1382.4', y1='0', x2='1382.4', y2='3456')
 											line.st2(x1='2073.6', y1='0', x2='2073.6', y2='3456')
 											line.st2(x1='2764.8', y1='0', x2='2764.8', y2='3456')
-								.col-md-5.col-lg-10.offset-md-1
+								.col-md-5.col-lg-10.offset-md-2
 									.btn-group-toggle(data-toggle='buttons')
 										label.btn.btn-info
 											input(type='checkbox', autocomplete='off', style="font-size:13px;")
-											| Call Killshot #5
-									.btn-group-toggle(data-toggle='buttons')
+											| Call KS #5
 										label.btn.btn-info
 											input(type='checkbox', autocomplete='off', style="font-size:13px;")
-											| Call Killshot #10
+											| Call KS #10

@@ -4,10 +4,10 @@ mixin modal(title,id)
 		.modal-dialog
 			.modal-content
 				.modal-header
+					h4.modal-title(id=id+"Label")= title
 					button.close(type="button",data-dismiss="modal")
 						span(aria-hidden="true") &times;
 						span.sr-only Close
-					h4.modal-title(id=id+"Label")= title
 				.modal-body
 					block
 				.modal-footer
